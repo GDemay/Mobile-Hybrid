@@ -12,7 +12,7 @@ describe('SignupPage', () => {
       declarations: [ SignupPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
-    .compileComponents();
+        .compileComponents();
   }));
 
   beforeEach(() => {

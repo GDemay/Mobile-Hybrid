@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AuthService} from '../services/auth.service';
-import {FormControl, FormGroup} from '@angular/forms';
-import { ModalController} from '@ionic/angular';
+import { AuthService } from '../services/auth.service';
+import { FormGroup, FormControl } from '@angular/forms';
+import { ModalController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,7 @@ import { ModalController} from '@ionic/angular';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+
   public loginForm: FormGroup;
 
   constructor(
@@ -25,11 +27,8 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-    async login() {
-      await this.authService.login(this.loginForm.value.email, this.loginForm.value.password);
-    }
-
-  goToSignUp() {
-
+  async login() {
+    await this.authService.login(this.loginForm.value.email, this.loginForm.value.password);
   }
+
 }

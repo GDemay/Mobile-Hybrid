@@ -9,16 +9,22 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { AngularFireModule} from '@angular/fire';
-import { AngularFireAuthModule} from '@angular/fire/auth';
-import {environment} from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+import { environment } from '../environments/environment';
+
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
-    // tslint:disable-next-line:max-line-length
-      BrowserModule, IonicModule.forRoot({mode: 'ios'}), AppRoutingModule, AngularFireModule.initializeApp(environment.firebase, 'test'), AngularFireModule],
+    BrowserModule,
+    IonicModule.forRoot({ mode: 'ios' }),
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase, 'test'),
+    AngularFireAuthModule
+  ],
   providers: [
     StatusBar,
     SplashScreen,
@@ -26,4 +32,4 @@ import {environment} from '../environments/environment';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
