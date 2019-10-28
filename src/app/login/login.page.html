@@ -1,0 +1,24 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list lines="none">
+    <form [formGroup]="loginForm">
+
+      <ion-item>
+        <ion-label position="stacked">Email Label</ion-label>
+        <ion-input type="email" formControlName="email" placeholder="Email address"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Stacked Label</ion-label>
+        <ion-input type="password" formControlName="password" placeholder="password"></ion-input>
+      </ion-item>
+      <ion-button expand="block" (click)="login()">login</ion-button>
+
+    </form>
+  </ion-list>
+  <ion-button expand="block" [routerDirection]="'forward'" [routerLink]="['/signup']">Register</ion-button>
+</ion-content>
