@@ -15,6 +15,7 @@ export class AppComponent {
       private splashScreen: SplashScreen,
       private statusBar: StatusBar
   ) {
+    this.sideMenu();
     this.initializeApp();
   }
 
@@ -34,14 +35,9 @@ export class AppComponent {
             icon: 'home'
           },
           {
-            title: 'Chat',
-            url: '/chat',
-            icon: 'chatboxes'
-          },
-          {
-            title: 'Contacts',
-            url: '/contacts',
-            icon: 'contacts'
+            title: 'Logout',
+            url: '/logout',
+            icon: 'ios-close-circle'
           },
         ];
   }
