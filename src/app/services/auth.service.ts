@@ -14,6 +14,7 @@ export class AuthService {
         afAuth.auth.onAuthStateChanged((user) => {
             if (user) {
                 this.natCtrl.navigateRoot(['/home']);
+
             } else {
               this.natCtrl.navigateRoot(['']);
             }

@@ -9,6 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
+  navigate: any;
   constructor(
       private platform: Platform,
       private splashScreen: SplashScreen,
@@ -22,5 +23,26 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  sideMenu() {
+    this.navigate =
+        [
+          {
+            title: 'Home',
+            url: '/home',
+            icon: 'home'
+          },
+          {
+            title: 'Chat',
+            url: '/chat',
+            icon: 'chatboxes'
+          },
+          {
+            title: 'Contacts',
+            url: '/contacts',
+            icon: 'contacts'
+          },
+        ];
   }
 }
