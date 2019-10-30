@@ -35,10 +35,15 @@ export class AppComponent {
             icon: 'home'
           },
           {
-            title: 'Logout',
-            url: '/logout',
-            icon: 'ios-close-circle'
+              title: 'About the project',
+              url: '/about',
+              icon: 'md-contacts'
           },
+            {
+                title: 'Logout',
+                url: '/logout',
+                icon: 'ios-close-circle'
+            },
         ];
   }
 }

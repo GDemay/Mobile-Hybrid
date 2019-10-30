@@ -9,6 +9,8 @@ const routes: Routes = [
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'signup', loadChildren: './signup/signup.module#SignupPageModule' },
   {path: 'logout', loadChildren: './logout/logout.module#LogoutPageModule'},
+  {path: 'about', loadChildren: './about/about.module#AboutPageModule', canActivate: [AuthGuard]},
+  {path: 'recording', loadChildren: './recording/recording.module#RecordingPageModule', canActivate: [AuthGuard]},
 ];
 
 @NgModule({
