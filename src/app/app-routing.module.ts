@@ -11,6 +11,11 @@ const routes: Routes = [
   {path: 'logout', loadChildren: './logout/logout.module#LogoutPageModule'},
   {path: 'about', loadChildren: './about/about.module#AboutPageModule', canActivate: [AuthGuard]},
   {path: 'recording', loadChildren: './recording/recording.module#RecordingPageModule', canActivate: [AuthGuard]},
+  { path: 'conversation-details', loadChildren: './conversation-details/conversation-details.module#ConversationDetailsPageModule' },
+  { path: 'conversation-details/:id', loadChildren: './conversation-details/conversation-details.module#ConversationDetailsPageModule' },
+
+
+
 ];
 
 @NgModule({

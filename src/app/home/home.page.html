@@ -29,74 +29,16 @@
     </ion-card-header>
   </ion-card>
 
+  <ion-content>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/idea">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
   <ion-list>
-    <ion-card href="#">
-      <ion-card-header>
-        <ion-card-title>
-          Meeting about cloud
-        </ion-card-title>
-        <ion-card-subtitle>
-          30 novembre 2019 - 15:05 -
-          <ion-icon name="time"></ion-icon>
-          2h32
-        </ion-card-subtitle>
-        <ion-button color="danger" size="small">
-          <ion-icon name="trash" slot="icon-only"></ion-icon>
-        </ion-button>
-
-      </ion-card-header>
-
-    </ion-card>
-
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>
-          Conference on Devops
-        </ion-card-title>
-        <ion-card-subtitle>
-          02 Décembre 2019 - 12:38 -
-          <ion-icon name="time"></ion-icon>
-          1h12
-        </ion-card-subtitle>
-        <ion-button color="danger" size="small">
-          <ion-icon name="trash" slot="icon-only"></ion-icon>
-        </ion-button>
-
-      </ion-card-header>
-    </ion-card>
-
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>
-          Learn how to learn
-        </ion-card-title>
-        <ion-card-subtitle>
-          12 Décembre 2019 - 16h:30 -
-          <ion-icon name="time"></ion-icon>
-          45m36
-        </ion-card-subtitle>
-        <ion-button color="danger" size="small">
-          <ion-icon name="trash" slot="icon-only"></ion-icon>
-        </ion-button>
-
-      </ion-card-header>
-    </ion-card>
-
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>
-          Meeting about cloud
-        </ion-card-title>
-        <ion-card-subtitle>
-          30 novembre 2019 - 15:05 -
-          <ion-icon name="time"></ion-icon>
-          2h32
-        </ion-card-subtitle>
-        <ion-button color="danger" size="small">
-          <ion-icon name="trash" slot="icon-only"></ion-icon>
-        </ion-button>
-      </ion-card-header>
-    </ion-card>
+    <ion-item button [routerLink]="['/idea', idea.id]" *ngFor="let idea of (ideas | async)">
+      {{ idea.name }}
+    </ion-item>
   </ion-list>
-
 </ion-content>
