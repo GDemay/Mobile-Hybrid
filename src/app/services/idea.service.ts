@@ -1,25 +1,20 @@
+
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs';
-import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
-import {map, take} from 'rxjs/operators';
-import DocumentReference = firebase.firestore.DocumentReference;
-import * as firebase from 'firebase';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference } from '@angular/fire/firestore';
+import { map, take } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 export interface Idea {
   id?: string;
   name: string;
   notes: string;
 }
-
 @Injectable({
   providedIn: 'root'
 })
 export class IdeaService {
-
   private readonly ideas: Observable<Idea[]>;
   private ideaCollection: AngularFirestoreCollection<Idea>;
-
-
 
   constructor(private afs: AngularFirestore) {
     this.ideaCollection = this.afs.collection<Idea>('ideas');
@@ -60,4 +55,3 @@ export class IdeaService {
     return this.ideaCollection.doc(id).delete();
   }
 }
-

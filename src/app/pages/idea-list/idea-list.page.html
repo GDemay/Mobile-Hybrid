@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <h2 style="text-align:center;">Record a meeting.</h2>
+      <div style="display: flex; justify-content: center;">
+
+        <ion-button [routerDirection]="'forward'" [routerLink]="['/recording']" color="primary">
+          <ion-icon name="microphone"></ion-icon>
+          Start recording
+        </ion-button>
+        <ion-button color="primary">
+          <ion-icon name="document"></ion-icon>
+          Import audio
+        </ion-button>
+      </div>
+
+
+    </ion-card-header>
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/idea">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-list>
+    <ion-item button [routerLink]="['/idea', idea.id]" *ngFor="let idea of (ideas | async)">
+      {{ idea.name }}
+    </ion-item>
+  </ion-list>
+</ion-content>

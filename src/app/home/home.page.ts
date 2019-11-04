@@ -3,10 +3,9 @@ import {ToastController} from 'ionic-angular';
 import {AuthService} from '../services/auth.service';
 import {Router} from '@angular/router';
 
-import {Observable, Subject} from 'rxjs';
+import {Subject} from 'rxjs';
 
 import {FormControl, FormGroup} from '@angular/forms';
-import {Idea, IdeaService} from '../services/idea.service';
 
 @Component({
   selector: 'app-home',
@@ -15,16 +14,13 @@ import {Idea, IdeaService} from '../services/idea.service';
 })
 export class HomePage implements OnInit {
 
-  private ideas: Observable<Idea[]>;
-
-
   // @ts-ignore
-  constructor(public authService: AuthService, private toastCtrl: ToastController, private route: Router, private ideaService: IdeaService)
+  constructor(public authService: AuthService, private toastCtrl: ToastController, private route: Router)
 
 
 
   ngOnInit(): void {
-    this.ideas = this.ideaService.getIdeas();
+
   }
 
 }
