@@ -12,7 +12,7 @@ export class ConversationDetailsPage implements OnInit {
 
   idea: Idea = {
     name: '',
-    notes: ''
+    notes: '' 
   };
 
   constructor(private activatedRoute: ActivatedRoute, private ideaService: IdeaService,
