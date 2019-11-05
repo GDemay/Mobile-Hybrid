@@ -26,15 +26,14 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
     IonicModule.forRoot({ mode: 'ios' }),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
+    // AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AngularFirestoreModule,
+     AngularFirestoreModule,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    { provide: FirestoreSettingsToken, useValue: {} }
 
   ],
   bootstrap: [AppComponent]

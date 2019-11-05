@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../services/auth.service';
 import {LoadingController} from '@ionic/angular';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -10,7 +11,7 @@ import {LoadingController} from '@ionic/angular';
 })
 export class LogoutPage implements OnInit {
 
-    constructor(public authService: AuthService, public loadingController: LoadingController) {
+    constructor(public authService: AuthService, public loadingController: LoadingController, private router: Router) {
     }
 
     ngOnInit() {
@@ -32,6 +33,8 @@ export class LogoutPage implements OnInit {
         await this.presentLoading();
         await this.authService.logout().then((value) => {
             console.log('SUCCESS!');
+            this.router.navigate(['/login']);
         });
+
     }
 }

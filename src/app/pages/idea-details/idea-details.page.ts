@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IdeaService, Idea } from 'src/app/services/idea.service';
 import { ToastController } from '@ionic/angular';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-idea-details',
@@ -17,7 +18,8 @@ export class IdeaDetailsPage implements OnInit {
 
 
   constructor(private activatedRoute: ActivatedRoute, private ideaService: IdeaService,
-              private toastCtrl: ToastController, private router: Router) { }
+              private toastCtrl: ToastController, private router: Router,
+              public authService: AuthService) { }
   ngOnInit() { }
 
   ionViewWillEnter() {

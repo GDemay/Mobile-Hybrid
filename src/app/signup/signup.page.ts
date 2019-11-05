@@ -25,6 +25,9 @@ export class SignupPage implements OnInit {
   async register() {
     await this.authService.signup(this.registerForm.value["email"], this.registerForm.value["password"]).then((value) => {
 
+    }, err => {
+      this.authService.presentAlert(err, 'signup connexion error');
+      console.log('Signup connexion error');
     });
   }
 

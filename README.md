@@ -9,4 +9,3 @@ The application must involve at least :
 Application addressing real problematics will be more considered than another todoApp.
 
 
-guillaume.demay@epitech.eu & benjamin.henry@epitech.eu
