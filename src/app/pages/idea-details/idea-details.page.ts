@@ -13,7 +13,8 @@ import {AuthService} from '../../services/auth.service';
 export class IdeaDetailsPage implements OnInit {
   idea: Idea = {
     name: '',
-    notes: ''
+    notes: '',
+    date: new Date()
   };
 
 
