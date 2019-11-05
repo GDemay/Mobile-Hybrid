@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="home"></ion-back-button>
+      <ion-back-button defaultHref="home" [color]="isRecording ? 'danger' : 'primary'"></ion-back-button>
     </ion-buttons >
     <ion-title>
       Add a conversation
@@ -13,12 +13,12 @@
 
   <ion-item>
     <ion-label position="stacked">Name</ion-label>
-    <ion-input [(ngModel)]="idea.name"></ion-input>
+    <ion-input [(ngModel)]="idea.name" required></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label position="stacked">Notes</ion-label>
-    <ion-textarea [(ngModel)]="idea.notes" rows="8"></ion-textarea>
+    <ion-textarea [(ngModel)]="idea.notes" rows="4"></ion-textarea>
   </ion-item>
 </ion-content>
 
@@ -30,6 +30,32 @@
     </ion-button>
   </ion-toolbar>
 </ion-footer>
+
+
+
+<ion-button full (click)="startListening()">Start Listeningg</ion-button>
+<ion-button full (click)="stopListening()" *ngIf="isIos()">Get Permission</ion-button>
+<ion-card>
+  <ion-card-header >
+
+    <ion-text [(ngModel)]="idea.speech">>
+      {{ idea.speech }}
+    </ion-text>
+
+  </ion-card-header>
+  <ion-card-content>
+    <ion-list>
+      <ion-item *ngFor="let match of matches">
+        <ion-card>
+          {{ matches }}
+        </ion-card>
+
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>
+
+
 
 <ion-footer *ngIf="idea.id">
   <ion-row no-padding text-center>

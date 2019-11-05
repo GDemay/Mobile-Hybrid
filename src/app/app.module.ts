@@ -13,11 +13,16 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
 
 import { environment } from '../environments/environment';
+
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -33,6 +38,7 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
   providers: [
     StatusBar,
     SplashScreen,
+      SpeechRecognition,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
 
   ],

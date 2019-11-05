@@ -8,6 +8,7 @@ export interface Idea {
   id?: string;
   name: string;
   notes: string;
+  speech: string;
   date: any;
 }
 @Injectable({

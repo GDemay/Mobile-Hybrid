@@ -41,7 +41,9 @@
     <ion-card *ngFor="let idea of (ideas | async)">
       <ion-card-header>
        <ion-card-title> {{ idea.name }}</ion-card-title>
-         <ion-card-subtitle><ion-icon name="time"></ion-icon>{{ idea.date.toDate() | date: 'medium' }}</ion-card-subtitle>
+         <ion-card-subtitle><ion-icon name="time"></ion-icon>{{ idea.date.toDate() | date: 'medium' }}
+         {{ idea.speech }}
+         </ion-card-subtitle>
         <ion-button  [routerLink]="['/idea', idea.id]" size="small"  color="success">
           <ion-icon name="save" slot="start"></ion-icon>
           Update
