@@ -22,7 +22,7 @@
         </ion-button>
         <ion-button color="primary">
           <ion-icon name="document"></ion-icon>
-          Import audio
+          In progress
         </ion-button>
       </div>
 
@@ -36,10 +36,19 @@
     </ion-fab-button>
   </ion-fab>
 
-  <ion-list>
 
-    <ion-item button [routerLink]="['/idea', idea.id]" *ngFor="let idea of (ideas | async)">
-      {{ idea.name }}
-    </ion-item>
+  <ion-list>
+    <ion-card *ngFor="let idea of (ideas | async)">
+      <ion-card-header>
+       <ion-card-title> {{ idea.name }}</ion-card-title>
+         <ion-card-subtitle>30 novembre 2019 - 15:05 -<ion-icon name="time"></ion-icon>2h32</ion-card-subtitle>
+        <ion-button  [routerLink]="['/idea', idea.id]" size="small"  color="success">
+          <ion-icon name="save" slot="start"></ion-icon>
+          Update
+        </ion-button>
+      </ion-card-header>
+    </ion-card>
   </ion-list>
+
+
 </ion-content>

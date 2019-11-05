@@ -17,4 +17,6 @@ export class IdeaListPage implements OnInit {
     console.log();
     this.ideas = this.ideaService.getIdeas();
   }
+
+
 }
