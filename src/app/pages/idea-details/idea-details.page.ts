@@ -33,7 +33,7 @@ export class IdeaDetailsPage implements OnInit {
 
   addIdea() {
     this.ideaService.addIdea(this.idea).then(() => {
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/home');
       this.showToast('Idea added');
     }, err => {
       this.showToast('There was a problem adding your idea :(');
@@ -43,7 +43,7 @@ export class IdeaDetailsPage implements OnInit {
 
   deleteIdea() {
     this.ideaService.deleteIdea(this.idea.id).then(() => {
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/home');
       this.showToast('Idea deleted');
     }, err => {
       this.showToast('There was a problem deleting your idea :(');

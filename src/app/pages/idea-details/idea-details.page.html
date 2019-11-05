@@ -1,9 +1,11 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Idea Details</ion-title>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons >
+    <ion-title>
+      Add a conversation
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -22,9 +24,9 @@
 
 <ion-footer *ngIf="!idea.id">
   <ion-toolbar color="success">
-    <ion-button expand="full" fill="clear" color="light" (click)="addIdea()">
+    <ion-button [routerDirection]="'forward'" [routerLink]="['/home']" expand="full" fill="clear" color="light" (click)="addIdea()">
       <ion-icon name="checkmark" slot="start"></ion-icon>
-      Add Idea
+      Add a conversation
     </ion-button>
   </ion-toolbar>
 </ion-footer>
@@ -38,7 +40,7 @@
       </ion-button>
     </ion-col>
     <ion-col size="6">
-      <ion-button expand="block" fill="solid" color="success" (click)="updateIdea()">
+      <ion-button [routerDirection]="'forward'" [routerLink]="['/home']" expand="block" fill="solid" color="success" (click)="updateIdea()">
         <ion-icon name="save" slot="start"></ion-icon>
         Update
       </ion-button>
