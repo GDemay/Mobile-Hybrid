@@ -8,6 +8,7 @@ export interface Idea {
   id?: string;
   name: string;
   notes: string;
+  speech: string;
   date: any;
 }
 @Injectable({
@@ -30,6 +31,10 @@ export class IdeaService {
     );
   }
 
+  sortByKey(date) {
+
+  }
+
   getIdeas(): Observable<Idea[]> {
     return this.ideas;
   }
@@ -49,7 +54,7 @@ export class IdeaService {
   }
 
   updateIdea(idea: Idea): Promise<void> {
-    return this.ideaCollection.doc(idea.id).update({ name: idea.name, notes: idea.notes });
+    return this.ideaCollection.doc(idea.id).update({name: idea.name, notes: idea.notes, speech: idea.speech});
   }
 
   deleteIdea(id: string): Promise<void> {
