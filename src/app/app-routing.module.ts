@@ -18,11 +18,6 @@ const routes: Routes = [
   { path: 'idea-details', loadChildren: './pages/idea-details/idea-details.module#IdeaDetailsPageModule', canActivate: [AuthGuard] } ,
    { path: 'idea', loadChildren: './pages/idea-details/idea-details.module#IdeaDetailsPageModule', canActivate: [AuthGuard]  },
    { path: 'idea/:id', loadChildren: './pages/idea-details/idea-details.module#IdeaDetailsPageModule', canActivate: [AuthGuard]  },
-  {
-    path: 'idea/delete/:id',
-    loadChildren: './pages/idea-details/idea-details.module#IdeaDetailsPageModule',
-    canActivate: [AuthGuard]
-  },
 
 ];
 

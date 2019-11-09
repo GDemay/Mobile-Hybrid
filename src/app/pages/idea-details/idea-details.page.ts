@@ -73,15 +73,13 @@ export class IdeaDetailsPage implements OnInit {
         });
     }
 
-    async updateIdea() {
-        this.idea.speech = this.matches[0];
+    updateIdea() {
         this.ideaService.updateIdea(this.idea).then(() => {
             this.showToast('Meeting updated', 'success');
         }, err => {
             this.showToast('There was a problem updating your meeting :(', 'danger');
             console.log(err);
         });
-        this.idea.speech = this.matches[0];
     }
 
     showToast(msg, color) {
