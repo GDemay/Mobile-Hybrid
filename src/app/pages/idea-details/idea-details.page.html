@@ -10,7 +10,6 @@
 </ion-header>
 
 <ion-content padding>
-
   <ion-item>
     <ion-label position="stacked">Name</ion-label>
     <ion-input [(ngModel)]="idea.name" required></ion-input>
@@ -26,18 +25,18 @@
   <ion-toolbar color="success">
     <ion-button [routerDirection]="'forward'" [routerLink]="['/home']" expand="full" fill="clear" color="light" (click)="addIdea()">
       <ion-icon name="checkmark" slot="start"></ion-icon>
-        Add a conversation!!!
+        Add a conversation!
     </ion-button>
   </ion-toolbar>
 </ion-footer>
 
 
-<ion-button (click)="startListening()" full>Start Listeniinggg</ion-button>
-<ion-button full (click)="stopListening()" *ngIf="isIos()">Get Permission</ion-button>
+<ion-button (click)="startListening()" full>Start Listening</ion-button>
+<ion-button (click)="stopListening()" *ngIf="isIos()">Get Permission</ion-button>
 <ion-card>
   <ion-card-header >
   </ion-card-header>
-    <ion-card-content async>
+    <ion-card-content>
         {{ idea.speech }}
   </ion-card-content>
 </ion-card>

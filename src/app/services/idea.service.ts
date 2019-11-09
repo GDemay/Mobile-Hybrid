@@ -50,7 +50,7 @@ export class IdeaService {
   }
 
   updateIdea(idea: Idea): Promise<void> {
-    return this.ideaCollection.doc(idea.id).update({ name: idea.name, notes: idea.notes });
+    return this.ideaCollection.doc(idea.id).update({name: idea.name, notes: idea.notes, speech: idea.speech});
   }
 
   deleteIdea(id: string): Promise<void> {

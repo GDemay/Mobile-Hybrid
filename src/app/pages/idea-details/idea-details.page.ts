@@ -14,8 +14,9 @@ import {SpeechRecognition} from '@ionic-native/speech-recognition/ngx';
 export class IdeaDetailsPage implements OnInit {
 
     matches: string[];
-    match_string: string;
     isRecording: boolean;
+    const;
+    options: any;
 
     idea: Idea = {
         name: '',
@@ -33,12 +34,13 @@ export class IdeaDetailsPage implements OnInit {
     }
 
     ngOnInit() {
-
+        this.options = {
+            language: 'fr-FR'
+        };
     }
 
 
     isIos() {
-
         return this.plt.is('ios');
     }
 
@@ -51,40 +53,46 @@ export class IdeaDetailsPage implements OnInit {
         }
     }
 
-    addIdea() {
-
+    async addIdea() {
         this.ideaService.addIdea(this.idea).then(() => {
             this.router.navigateByUrl('/home');
-            this.showToast('Meeting added');
+            this.showToast('Meeting added', "success");
         }, err => {
-            this.showToast('There was a problem adding your idea :(');
+            this.showToast('There was a problem adding your meeting :(', 'danger');
             console.log(err);
         });
     }
 
-    deleteIdea() {
+    async deleteIdea() {
         this.ideaService.deleteIdea(this.idea.id).then(() => {
             this.router.navigateByUrl('/home');
-            this.showToast('Idea deleted');
+            this.showToast('Meeting deleted', 'danger');
         }, err => {
-            this.showToast('There was a problem deleting your idea :(');
+            this.showToast('There was a problem deleting your meeting :(', 'danger');
             console.log(err);
         });
     }
 
-    updateIdea() {
+    async updateIdea() {
+        this.idea.speech = this.matches[0];
         this.ideaService.updateIdea(this.idea).then(() => {
-            this.showToast('Idea updated');
+            this.showToast('Meeting updated', 'success');
         }, err => {
-            this.showToast('There was a problem updating your idea :(');
+            this.showToast('There was a problem updating your meeting :(', 'danger');
             console.log(err);
         });
+        this.idea.speech = this.matches[0];
     }
 
-    showToast(msg) {
+    showToast(msg, color) {
+        if (color == null) {
+            color = 'primary';
+        }
         this.toastCtrl.create({
             message: msg,
-            duration: 2000
+            duration: 2000,
+            position: 'top',
+            color: color
         }).then(toast => toast.present());
     }
 
@@ -97,11 +105,8 @@ export class IdeaDetailsPage implements OnInit {
             });
     }
 
-    startListening() {
+    async startListening() {
         this.getPermissions();
-        const options = {
-            language: 'fr-FR'
-        };
         this.speechRecognition.startListening().subscribe(matches => {
             this.matches = matches;
             this.changeDetector.detectChanges();
@@ -112,17 +117,19 @@ export class IdeaDetailsPage implements OnInit {
             console.log('PC recording error');
         });
         this.isRecording = true;
-
+        this.idea.speech = this.matches[0];
     }
 
-    stopListening() {
+
+    async stopListening() {
         this.speechRecognition.stopListening().then(() => {
             this.isRecording = false;
+            this.idea.speech = this.matches[0];
         }, err => {
             this.authService.presentAlert(err, 'You can\'t stop the record because you are probably on a PC. ' +
                 'Only available on smartphone devices. You can import audio file if you want in the Home page from any devices');
             console.log('PC recording error');
         });
-
+        this.idea.speech = this.matches[0];
     }
 }
