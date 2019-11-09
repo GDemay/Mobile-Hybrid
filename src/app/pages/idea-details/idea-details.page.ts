@@ -14,6 +14,7 @@ import {SpeechRecognition} from '@ionic-native/speech-recognition/ngx';
 export class IdeaDetailsPage implements OnInit {
 
     matches: string[];
+    match_string: string;
     isRecording: boolean;
 
     idea: Idea = {
@@ -51,9 +52,10 @@ export class IdeaDetailsPage implements OnInit {
     }
 
     addIdea() {
+
         this.ideaService.addIdea(this.idea).then(() => {
             this.router.navigateByUrl('/home');
-            this.showToast('Idea added');
+            this.showToast('Meeting added');
         }, err => {
             this.showToast('There was a problem adding your idea :(');
             console.log(err);
@@ -103,6 +105,11 @@ export class IdeaDetailsPage implements OnInit {
         this.speechRecognition.startListening().subscribe(matches => {
             this.matches = matches;
             this.changeDetector.detectChanges();
+            this.idea.speech = this.matches[0];
+        }, err => {
+            this.authService.presentAlert(err, 'You can\'t record because you are probably on a PC.' +
+                ' Only available on smartphone devices');
+            console.log('PC recording error');
         });
         this.isRecording = true;
 
@@ -111,6 +118,11 @@ export class IdeaDetailsPage implements OnInit {
     stopListening() {
         this.speechRecognition.stopListening().then(() => {
             this.isRecording = false;
+        }, err => {
+            this.authService.presentAlert(err, 'You can\'t stop the record because you are probably on a PC. ' +
+                'Only available on smartphone devices. You can import audio file if you want in the Home page from any devices');
+            console.log('PC recording error');
         });
+
     }
 }

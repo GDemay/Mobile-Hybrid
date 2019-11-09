@@ -26,29 +26,21 @@
   <ion-toolbar color="success">
     <ion-button [routerDirection]="'forward'" [routerLink]="['/home']" expand="full" fill="clear" color="light" (click)="addIdea()">
       <ion-icon name="checkmark" slot="start"></ion-icon>
-      Add a conversation
+        Add a conversation!!!
     </ion-button>
   </ion-toolbar>
 </ion-footer>
 
 
-
-<ion-button full (click)="startListening()">Start Listening</ion-button>
+<ion-button (click)="startListening()" full>Start Listeniinggg</ion-button>
 <ion-button full (click)="stopListening()" *ngIf="isIos()">Get Permission</ion-button>
 <ion-card>
   <ion-card-header >
-
-
   </ion-card-header>
-  <ion-card-content>
-    <ion-list>
-      <ion-item *ngFor="let match of matches">
-        {{ match }}
-      </ion-item>
-    </ion-list>
+    <ion-card-content async>
+        {{ idea.speech }}
   </ion-card-content>
 </ion-card>
-
 
 
 <ion-footer *ngIf="idea.id">
