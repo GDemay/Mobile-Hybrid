@@ -1,7 +1,7 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {IdeaService, Idea} from 'src/app/services/idea.service';
-import {Platform, ToastController} from '@ionic/angular';
+import {NavController, Platform, ToastController} from '@ionic/angular';
 import {AuthService} from '../../services/auth.service';
 import {SpeechRecognition} from '@ionic-native/speech-recognition/ngx';
 
@@ -14,6 +14,7 @@ import {SpeechRecognition} from '@ionic-native/speech-recognition/ngx';
 export class IdeaDetailsPage implements OnInit {
 
     matches: string[];
+    value_to_delete: number;
     isRecording: boolean;
     const;
     options: any;
@@ -29,11 +30,12 @@ export class IdeaDetailsPage implements OnInit {
     constructor(private plt: Platform, private speechRecognition: SpeechRecognition, private changeDetector: ChangeDetectorRef,
                 private activatedRoute: ActivatedRoute, private ideaService: IdeaService,
                 private toastCtrl: ToastController, private router: Router,
-                public authService: AuthService) {
+                public authService: AuthService, private natCtrl: NavController) {
 
     }
 
     ngOnInit() {
+        this.value_to_delete = 0;
         this.options = {
             language: 'fr-FR'
         };
@@ -53,7 +55,7 @@ export class IdeaDetailsPage implements OnInit {
         }
     }
 
-    async addIdea() {
+    addIdea() {
         this.ideaService.addIdea(this.idea).then(() => {
             this.router.navigateByUrl('/home');
             this.showToast('Meeting added', "success");
@@ -63,7 +65,7 @@ export class IdeaDetailsPage implements OnInit {
         });
     }
 
-    async deleteIdea() {
+    deleteIdea() {
         this.ideaService.deleteIdea(this.idea.id).then(() => {
             this.router.navigateByUrl('/home');
             this.showToast('Meeting deleted', 'danger');
@@ -107,27 +109,46 @@ export class IdeaDetailsPage implements OnInit {
         this.getPermissions();
         this.speechRecognition.startListening().subscribe(matches => {
             this.matches = matches;
+            this.setIdeaSpeech(this.matches[0]);
+            this.showToast(this.getIdeaSpeech(), "danger"); // getIdeaSpeech()
             this.changeDetector.detectChanges();
-            this.idea.speech = this.matches[0];
         }, err => {
             this.authService.presentAlert(err, 'You can\'t record because you are probably on a PC.' +
-                ' Only available on smartphone devices');
-            console.log('PC recording error');
+                ' Only available on smartphone devices - start');
+            console.log('PC recording error start');
+            this.setIdeaSpeech(this.matches[0]);
+            this.showToast('get_idea_speech' + this.getIdeaSpeech(), "warning"); // getIdeaSpeech()
         });
         this.isRecording = true;
-        this.idea.speech = this.matches[0];
     }
 
 
-    async stopListening() {
+    stopListening() {
+        console.log("Only for IOS devices");
         this.speechRecognition.stopListening().then(() => {
             this.isRecording = false;
-            this.idea.speech = this.matches[0];
+            this.showToast(this.getIdeaSpeech(), "danger");
         }, err => {
             this.authService.presentAlert(err, 'You can\'t stop the record because you are probably on a PC. ' +
-                'Only available on smartphone devices. You can import audio file if you want in the Home page from any devices');
-            console.log('PC recording error');
+                'Only available on smartphone devices. You can import audio file if you want in the Home page from any devices - stop');
+            console.log('PC recording error stop ');
         });
-        this.idea.speech = this.matches[0];
+        this.isRecording = true;
+
+    }
+
+    getIdeaSpeech() {
+        return this.idea.speech;
+    }
+
+    setIdeaSpeech(speech_to_set: string) {
+        if (speech_to_set == '') {
+            speech_to_set = "no values detected";
+        }
+        this.idea.speech = speech_to_set;
+        this.idea = Object.assign({}, this.idea);
+        console.log('Value for this idea', this.idea);
     }
 }
+
+// this.idea = Object.assign(this.idea, this.dea);
