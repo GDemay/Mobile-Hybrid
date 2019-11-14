@@ -20,4 +20,4 @@ Features :
 - Responsive card from home page
 - Delete meeting / update from home page
 - SpeechRecognition with smartphone devices imported from db
-- TODO : BUG ON PEUT ACCEDER AU LEFT PANEL A PARTIR DE LA PAGE DE CO
+- Notification à partir de Onesignal
