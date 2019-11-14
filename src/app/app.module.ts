@@ -18,8 +18,10 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
 import { environment } from '../environments/environment';
 
 import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {OneSignal} from '@ionic-native/onesignal/ngx';
 
 
+// @ts-ignore
 // @ts-ignore
 // @ts-ignore
 // @ts-ignore
@@ -40,6 +42,7 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
     SplashScreen,
       SpeechRecognition,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    OneSignal,
 
   ],
   bootstrap: [AppComponent]
