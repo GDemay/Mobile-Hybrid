@@ -105,7 +105,7 @@ export class IdeaDetailsPage implements OnInit {
             });
     }
 
-    async startListening() {
+    startListening() {
         this.getPermissions();
         this.speechRecognition.startListening().subscribe(matches => {
             this.matches = matches;
@@ -113,11 +113,7 @@ export class IdeaDetailsPage implements OnInit {
             this.showToast(this.getIdeaSpeech(), "danger"); // getIdeaSpeech()
             this.changeDetector.detectChanges();
         }, err => {
-            this.authService.presentAlert(err, 'You can\'t record because you are probably on a PC.' +
-                ' Only available on smartphone devices - start');
-            console.log('PC recording error start');
-            this.setIdeaSpeech(this.matches[0]);
-            this.showToast('get_idea_speech' + this.getIdeaSpeech(), "warning"); // getIdeaSpeech()
+            this.showToast(err, "danger");
         });
         this.isRecording = true;
     }
@@ -127,7 +123,7 @@ export class IdeaDetailsPage implements OnInit {
         console.log("Only for IOS devices");
         this.speechRecognition.stopListening().then(() => {
             this.isRecording = false;
-            this.showToast(this.getIdeaSpeech(), "danger");
+
         }, err => {
             this.authService.presentAlert(err, 'You can\'t stop the record because you are probably on a PC. ' +
                 'Only available on smartphone devices. You can import audio file if you want in the Home page from any devices - stop');
